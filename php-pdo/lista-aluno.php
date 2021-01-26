@@ -8,7 +8,7 @@ $databasePath = __DIR__ . '/banco.sqlite';
 $pdo = new PDO('sqlite:' . $databasePath);
 
 $statement = $pdo->query('SELECT * FROM students');
-var_dump($statement->fetchColumn(1));
+var_dump($statement->fetchObject());
 exit();
 $studentList = [];
 
