@@ -8,8 +8,10 @@ $databasePath = __DIR__ . '/banco.sqlite';
 $pdo = new PDO('sqlite:' . $databasePath);
 
 $statement = $pdo->query('SELECT * FROM students');
-$studenDatatList = $statement->fetchAll(PDO::FETCH_ASSOC);
+$studenDatatList = $statement->fetch(PDO::FETCH_ASSOC);
 $studentList = [];
+
+var_dump($studenDatatList); exit();
 
 foreach ($studenDatatList as $studentData) {
     $studentList[] = new Student(
