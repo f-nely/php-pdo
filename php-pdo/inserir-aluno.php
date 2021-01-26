@@ -12,7 +12,7 @@ $student = new Student(null, 'Vinicius Dias', new \DateTimeImmutable('1997-10-15
 
 $sqlInsert = "INSERT INTO students (name, birth_date) VALUES (:name, :birth_date)";
 $stetement = $pdo->prepare($sqlInsert);
-$stetement->bindParam('name', $student->name());
+$stetement->bindValue('name', $student->name());
 $stetement->bindValue('birth_date', $student->birthDate()->format('Y-m-d'));
 
 if ($stetement->execute()) {
