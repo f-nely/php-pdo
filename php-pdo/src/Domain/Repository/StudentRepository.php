@@ -9,6 +9,7 @@ use Alura\Pdo\Domain\Model\Student;
 interface StudentRepository
 {
     public function allStudents(): array;
+    public function studentsWithPhones(): array;
     public function studentsBirthAt(\DateTimeImmutable $birth_date): array;
     public function save(Student $student): bool;
     public function remove(Student $student): bool;
