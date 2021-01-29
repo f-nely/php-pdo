@@ -1,26 +1,36 @@
 <?php
 
-$databasePath = __DIR__ . '/banco.sqlite';
+use Alura\Pdo\Infrastructure\Persistence\ConnectionCreator;
 
-$pdo = new PDO('sqlite:' . $databasePath);
+require_once 'vendor/autoload.php';
+
+$pdo = ConnectionCreator::createConnection();
 
 echo "Conectei";
 
+$pdo->exec("INSERT INTO phones (area_code, number, student_id) VALUES ('24', '999999999', 1),('21', '222222222', 1);");
+exit();
+
 $createTableSql = '
     CREATE TABLE IF NOT EXISTS students (
-        id INTEGER PRIMARY KEY ,
+        id INTEGER PRIMARY KEY,
         name TEXT,
-        birth_date TEXT
+        birth_dat TEXT
     );
-
+    
     CREATE TABLE IF NOT EXISTS phones (
-        id INTEGER  PRIMARY KEY     
+        id INTEGER  PRIMARY KEY,     
         area_code TEXT,
         number TEXT,
         student_id INTEGER,
         FOREIGN KEY(student_id) REFERENCES students(id)
     );
 ';
+
+/*$dropTableSql = '
+    DROP TABLE phones;
+';*/
+
 $pdo->exec($createTableSql);
 
 
